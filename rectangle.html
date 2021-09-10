@@ -63,7 +63,15 @@ $("#fill").change(function(){
 	}
 });
 
-$("#fillColor").change(function(){context.fillStyle = fill.checked ? $("#fillColor").val() : "rgba(0,0,0,0)"});
+$("#fillColor").change(function(){
+	if (fill.checked){
+		context.fillStyle = $("#fillColor").val();
+		fillColor = $("#fillColor").val();
+	}else {
+		context.fillStyle = "rgba(0,0,0,0)";
+		fillColor = "rgba(0,0,0,0)";
+	}
+});
 
 $("#strokeColor").change(function(){context.strokeStyle = $("#strokeColor").val()});
 
