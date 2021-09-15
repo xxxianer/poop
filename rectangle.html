@@ -1,134 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="styles.css">
-<title>Rectangle</title>
+	<meta charset="utf-8">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="styles.css">
+	<title>Rectangle</title>
 </head>
+
 <body>
-<div id="set">
-	<div>
-		<input type="checkbox" id="fill" checked="true">
-		<label for="fillColor">Fill</label>
-		<input type="color" id="fillColor" value="#00FFFF">
-	</div>
+	<div id="set">
+		<div>
+			<input type="checkbox" id="fill" checked="true">
+			<label for="fillColor">Fill</label>
+			<input type="color" id="fillColor" value="#00FFFF">
+		</div>
 
-	<div>
-		<label for="strokeColor">Stroke</label>
-		<input type="color" id="strokeColor">
-		<input type="number" id="strokeWidth" value="3" min="1" max="50">
-		<label for="strokeWidth">px</label>
+		<div>
+			<label for="strokeColor">Stroke</label>
+			<input type="color" id="strokeColor">
+			<input type="number" id="strokeWidth" value="3" min="1" max="50">
+			<label for="strokeWidth">px</label>
+		</div>
+		<div>
+			<button id="clear">Clear</button>
+		</div>
 	</div>
-	<div>
-		<button id="clear">Clear</button></div>
-</div>
-<div id="main">
-<canvas id="canvas"></canvas>
-<svg id="svg" width="720" height="450" version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg"></svg>
-</div>
-<p id="coords">coordinates</p>
-<script>
-const canvas = document.getElementById('canvas');
-const svg = document.getElementById('svg');
-const context = canvas.getContext('2d');
-const fill = document.getElementById('fill');
-canvas.width = 720;
-canvas.height = 450;
-context.fillStyle = $("#fillColor").val();
-context.strokeStyle = $("#strokeColor").val();
-context.lineWidth = $("#strokeWidth").val();
-var fillColor = $("#fillColor").val();
-function clear(){context.clearRect(0, 0, canvas.width, canvas.height)};
+	<div id="main">
+		<canvas id="canvas"></canvas>
+		<svg id="svg" width="720" height="450" version="1.1" baseProfile="full"
+			xmlns="http://www.w3.org/2000/svg"></svg>
+	</div>
+	<p id="coords">coordinates</p>
+	<script>
 
-$("#strokeWidth").change(function(){
-	if ($("#strokeWidth").val() > 50){
-		$("#strokeWidth").val(50);
-		context.lineWidth = 50;
-	}else if (($("#strokeWidth").val() < 1)){
-		$("#strokeWidth").val(1);
-		context.lineWidth = 1;
-	}else{
+		const canvas = document.getElementById('canvas');
+		const svg = document.getElementById('svg');
+		const context = canvas.getContext('2d');
+		const fill = document.getElementById('fill');
+		canvas.width = 720;
+		canvas.height = 450;
+		context.fillStyle = $("#fillColor").val();
+		context.strokeStyle = $("#strokeColor").val();
 		context.lineWidth = $("#strokeWidth").val();
-	}
-});
+		var fillColor = $("#fillColor").val();
+		function clear() { context.clearRect(0, 0, canvas.width, canvas.height) };
 
-$("#fill").change(function(){
-	if (fill.checked){
-		context.fillStyle = $("#fillColor").val();
-		fillColor = $("#fillColor").val();
-	}else {
-		context.fillStyle = "rgba(0,0,0,0)";
-		fillColor = "rgba(0,0,0,0)";
-	}
-});
+		$("#strokeWidth").change(function () {
+			if ($("#strokeWidth").val() > 50) {
+				$("#strokeWidth").val(50);
+				context.lineWidth = 50;
+			} else if (($("#strokeWidth").val() < 1)) {
+				$("#strokeWidth").val(1);
+				context.lineWidth = 1;
+			} else {
+				context.lineWidth = $("#strokeWidth").val();
+			}
+		});
 
-$("#fillColor").change(function(){
-	if (fill.checked){
-		context.fillStyle = $("#fillColor").val();
-		fillColor = $("#fillColor").val();
-	}else {
-		context.fillStyle = "rgba(0,0,0,0)";
-		fillColor = "rgba(0,0,0,0)";
-	}
-});
+		$("#fill").change(function () {
+			if (fill.checked) {
+				context.fillStyle = $("#fillColor").val();
+				fillColor = $("#fillColor").val();
+			} else {
+				context.fillStyle = "rgba(0,0,0,0)";
+				fillColor = "rgba(0,0,0,0)";
+			}
+		});
 
-$("#strokeColor").change(function(){context.strokeStyle = $("#strokeColor").val()});
+		$("#fillColor").change(function () {
+			if (fill.checked) {
+				context.fillStyle = $("#fillColor").val();
+				fillColor = $("#fillColor").val();
+			} else {
+				context.fillStyle = "rgba(0,0,0,0)";
+				fillColor = "rgba(0,0,0,0)";
+			}
+		});
 
-canvas.onmousedown = function() {
-	const x1 = event.clientX - this.offsetLeft;
-    const y1 = event.clientY - this.offsetTop;
-	var left = event.clientX - this.offsetLeft;
-    var top = event.clientY - this.offsetTop;
-	this.onmousemove = function(e) {
-        left = event.clientX - this.offsetLeft;
-        top = event.clientY - this.offsetTop;
-		$("#coords").text(`X: ${left}, Y: ${top}`);
-		clear();
-		context.fillRect(x1, y1, left-x1, top-y1);
-		context.strokeRect(x1, y1, left-x1, top-y1);
-    };
+		$("#strokeColor").change(function () { context.strokeStyle = $("#strokeColor").val() });
+		function draw(x1, y1, endpoint) {
+			endpoint[0] = event.clientX - canvas.offsetLeft;
+			endpoint[1] = event.clientY - canvas.offsetTop;
+			$("#coords").text(`X: ${endpoint[0]}, Y: ${endpoint[1]}`);
+			clear();
+			context.fillRect(x1, y1, endpoint[0] - x1, endpoint[1] - y1);
+			context.strokeRect(x1, y1, endpoint[0] - x1, endpoint[1] - y1);
+		};
 
-    this.onmouseup = function() {
-		w = left-x1;
-		h = top-y1;
-		let x0 = x1, y0 = y1;
-		if (w<0){
-			w = -w;
-			x0 = x1 - w;
-		}
-		if (h<0){
-			h = -h;
-			y0 = y1 - h;
-		}
-		svg.innerHTML += `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" stroke="${$("#strokeColor").val()}" fill="${fillColor}" stroke-width="${$("#strokeWidth").val()}"/>`;
-        clear();
-		this.onmousemove = function(e) {
+		function drop(x1, y1, p, controller) {
+			controller.abort();
+			let w = p[0] - x1;
+			let h = p[1] - y1;
+			let x0 = x1, y0 = y1;
+			if (w < 0) {
+				w = -w;
+				x0 = x1 - w;
+			}
+			if (h < 0) {
+				h = -h;
+				y0 = y1 - h;
+			}
+			svg.innerHTML += `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" stroke="${$("#strokeColor").val()}" fill="${fillColor}" stroke-width="${$("#strokeWidth").val()}"/>`;
+			clear();
+
+		};
+		canvas.onmousedown = function () {
+			const x1 = event.clientX - canvas.offsetLeft;
+			const y1 = event.clientY - canvas.offsetTop;
+			const controller = new AbortController();
+			var endpoint = [x1, y1];
+			canvas.addEventListener('mouseup', function () { drop(x1, y1, endpoint, controller) }, { signal: controller.signal });
+			canvas.addEventListener('mousemove', function () { draw(x1, y1, endpoint,) }, { signal: controller.signal });
+		};
+
+
+		function setCoords() {
 			const left = event.clientX - this.offsetLeft;
 			const top = event.clientY - this.offsetTop;
 			$("#coords").text(`X: ${left}, Y: ${top}`);
 		};
-    };
-};
 
+		canvas.addEventListener('mousemove', setCoords);
+		canvas.onmouseleave = function () { $("#coords").css("visibility", "hidden") };
+		canvas.onmouseenter = function () { $("#coords").css("visibility", "visible") };
 
-canvas.onmousemove = function(e) {
-	const left = event.clientX - this.offsetLeft;
-	const top = event.clientY - this.offsetTop;
-	$("#coords").text(`X: ${left}, Y: ${top}`);
-};
-
-$("#canvas").mouseleave(function(){$("#coords").css("visibility", "hidden")});
-
-$("#canvas").mouseenter(function(){$("#coords").css("visibility", "visible")});
-
-$("#clear").click(function(){svg.innerHTML = ""});
-
-</script>
-<footer>
-  Rectangle | <a href="index.html" target="_blank">Sketch</a>
-  <p><time pubdate datetime="2021-09-01"></time></p>
-</footer>
+	</script>
+	<footer>
+		Rectangle | <a href="index.html" target="_blank">Sketch</a>
+		<p><time pubdate datetime="2021-09-01"></time></p>
+	</footer>
 
 </body>
+
 </html>
