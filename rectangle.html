@@ -125,7 +125,7 @@
 		canvas.addEventListener('mousemove', setCoords);
 		canvas.onmouseleave = function () { $("#coords").css("visibility", "hidden") };
 		canvas.onmouseenter = function () { $("#coords").css("visibility", "visible") };
-
+		$("#clear").click(function(){svg.innerHTML = ""});
 	</script>
 	<footer>
 		Rectangle | <a href="index.html" target="_blank">Sketch</a>
