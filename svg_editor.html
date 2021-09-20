@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:8080/ -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="http://localhost:8080/favicon.ico">
+    <title>svg_editor</title>
+  <link href="./svg_editor_files/app.js" rel="preload" as="script"><link href="./svg_editor_files/chunk-vendors.js" rel="preload" as="script"><style type="text/css">
+#tools[data-v-7d898593] {
+  width: 6rem;
+  height: 495px;
+  background-color: lightslategray;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.tool[data-v-7d898593] {
+  padding: 0.5rem 0;
+  align-items: center;
+}
+#strokeWidth[data-v-7d898593] {
+  box-sizing: border-box;
+}
+input[type="color"][data-v-7d898593],
+button[data-v-7d898593] {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  height: 2rem;
+  align-self: center;
+  color: #666;
+}
+input[type="checkbox"][data-v-7d898593] {
+  margin-left: 0;
+}
+input[type="color"][data-v-7d898593],
+input[type="number"][data-v-7d898593] {
+  border: 1px inset white;
+  border-radius: 5px;
+  width: 2.5rem;
+  height: 1.5rem;
+}
+input[type="color"][data-v-7d898593] {
+  padding: 0;
+}
+#tools > div[data-v-7d898593] {
+  padding: 1rem 0.5rem;
+  border-bottom: 2px #9ab dashed;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#tools > div > * > *[data-v-7d898593] {
+  margin: 0.3rem 0.1rem;
+}
+#tools button[data-v-7d898593] {
+  position: relative;
+  margin: 1rem 0;
+  width: 5.2rem;
+}
+.tool[data-v-7d898593] {
+  margin: 0 0.8rem;
+}
+</style><style type="text/css">
+html {
+  overflow: hidden;
+}
+body {
+  width: 100%;
+  background-color: #9ab;
+  max-width: 68rem;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: white;
+}
+#main {
+  display: flex;
+  margin-top: 2rem;
+}
+#main > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+#coords {
+  font-weight: normal;
+}
+#workarea {
+  margin: 0;
+}
+.canvas {
+  height: 495px;
+  width: 880px;
+  cursor: crosshair;
+  position: absolute;
+}
+.svg_canvas {
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
+  position: absolute;
+}
+</style></head>
+  <body>
+    <noscript>
+      <strong>We're sorry but svg_editor doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app" data-v-app=""><div id="main"><div id="tools" data-v-7d898593=""><div data-v-7d898593=""><p class="tool" data-v-7d898593=""><label for="strokeColor" data-v-7d898593="">Stroke</label><br data-v-7d898593=""><input type="color" id="strokeColor" title="stroke color" data-v-7d898593=""></p><p class="tool" data-v-7d898593=""><label for="strokeWidth" data-v-7d898593="">width</label><br data-v-7d898593=""><input type="number" id="strokeWidth" min="1" max="50" title="stroke width" data-v-7d898593=""></p></div><div data-v-7d898593=""><p class="tool" data-v-7d898593=""><input type="checkbox" id="fill" data-v-7d898593=""><label for="fill" data-v-7d898593="">Fill</label><br data-v-7d898593=""><input type="color" id="fillColor" title="fill color" data-v-7d898593=""></p></div><div data-v-7d898593=""><button class="btn" id="clear" data-v-7d898593=""> Clear </button></div></div><div id="workarea"><canvas class="canvas"></canvas><svg class="canvas svg_canvas" xmlns="http://www.w3.org/2000/svg"><rect id="rect-1" x="418" y="119" width="0" height="0" stroke="#000" fill="#00ffff" stroke-width="1"></rect><rect id="rect-2" x="856" y="143" width="0" height="0" stroke="#000" fill="#00ffff" stroke-width="1"></rect></svg></div></div><!--v-if--></div>
+    <!-- built files will be auto injected -->
+  <script type="text/javascript" src="./svg_editor_files/chunk-vendors.js"></script><script type="text/javascript" src="./svg_editor_files/app.js"></script>
+
+</body></html>
