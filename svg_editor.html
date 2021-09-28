@@ -7,6 +7,9 @@
     <link rel="icon" href="http://localhost:8080/favicon.ico">
     <title>svg_editor</title>
   <link href="./svg_editor_files/app.js" rel="preload" as="script"><link href="./svg_editor_files/chunk-vendors.js" rel="preload" as="script"><style type="text/css">
+h4[data-v-65511fdb] {
+  margin: 0;
+}
 #tools[data-v-65511fdb] {
   width: 8rem;
   height: 495px;
@@ -49,7 +52,6 @@ input[type="color"][data-v-65511fdb] {
   flex-direction: column;
 }
 #tools button[data-v-65511fdb] {
-  margin: 0.5rem;
   width: 5.2rem;
   height: 2rem;
 }
@@ -58,13 +60,10 @@ input[type="color"][data-v-65511fdb] {
   padding: 0;
   align-self: center;
 }
-.state .layer[data-v-65511fdb] {
-  padding: 0.1rem;
+.state[data-v-65511fdb],
+.layer[data-v-65511fdb] {
+  padding: 0.3rem;
   font-weight: normal;
-}
-</style><style type="text/css">
-.svg_content {
-  cursor: pointer;
 }
 </style><style type="text/css">
 .svg_canvas[data-v-3b06eedc] {
@@ -77,7 +76,7 @@ input[type="color"][data-v-65511fdb] {
   opacity: 0.2;
   z-index: 0;
 }
-.svg_content[data-v-3b06eedc] {
+.select_cursor[data-v-3b06eedc] {
   cursor: pointer;
 }
 </style><style type="text/css">
@@ -103,8 +102,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: bold;
-  font-size: 1rem;
-  line-height: 1.25;
+  font-size: 0.9rem;
+  line-height: 1.25rem;
   color: rgb(240, 240, 240);
 }
 #main {
@@ -130,7 +129,7 @@ body {
     <noscript>
       <strong>We're sorry but svg_editor doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app" data-v-app=""><div id="main"><div id="tools" data-v-65511fdb=""><div data-v-65511fdb=""><div class="tool" data-v-65511fdb="">Shape</div><p data-v-65511fdb=""><input type="radio" id="select" name="state" value="0" data-v-65511fdb=""><label class="state" for="select" data-v-65511fdb="">Select</label><br data-v-65511fdb=""><input type="radio" id="rect" name="state" value="0" data-v-65511fdb=""><label class="state" for="rect" data-v-65511fdb="">Rectangle</label><br data-v-65511fdb=""><input type="radio" id="elli" name="state" value="1" data-v-65511fdb=""><label class="state" for="elli" data-v-65511fdb="">Ellipse</label></p></div><div data-v-65511fdb=""><div class="tool" data-v-65511fdb=""><label for="strokeColor" data-v-65511fdb="">Stroke</label></div><div class="tool" data-v-65511fdb=""><input type="color" id="strokeColor" title="stroke color" data-v-65511fdb=""></div><br data-v-65511fdb=""><div class="tool" data-v-65511fdb=""><label for="strokeWidth" data-v-65511fdb="">width</label></div><div class="tool" data-v-65511fdb=""><input type="number" id="strokeWidth" min="1" max="50" title="stroke width" data-v-65511fdb=""></div></div><div data-v-65511fdb=""><div class="tool" data-v-65511fdb=""><input type="checkbox" id="fill" data-v-65511fdb=""><label for="fill" data-v-65511fdb="">Fill</label></div><div class="tool" data-v-65511fdb=""><input type="color" id="fillColor" title="fill color" data-v-65511fdb=""></div></div><div data-v-65511fdb=""><div class="tool" data-v-65511fdb="">Layer</div><p data-v-65511fdb=""><input type="radio" id="control" name="layer" value="0" data-v-65511fdb=""><label class="layer" for="control" data-v-65511fdb="">Control</label><br data-v-65511fdb=""><input type="radio" id="fluid" name="layer" value="1" data-v-65511fdb=""><label class="layer" for="fluid" data-v-65511fdb="">Fluid</label></p></div><div data-v-65511fdb=""><button class="btn" id="clear" data-v-65511fdb=""> Clear </button></div></div><svg xmlns="http://www.w3.org/2000/svg" id="workarea" class="drawing_cursor"><svg class="svg_canvas" xmlns="http://www.w3.org/2000/svg" data-v-3b06eedc=""></svg><svg class="svg_canvas inactive" xmlns="http://www.w3.org/2000/svg" data-v-3b06eedc=""></svg><!--v-if--></svg></div><!--v-if--></div>
+    <div id="app" data-v-app=""><div id="main"><div id="tools" data-v-65511fdb=""><div data-v-65511fdb=""><h4 data-v-65511fdb="">Shape</h4><p data-v-65511fdb=""><input type="radio" id="select" name="state" value="0" data-v-65511fdb=""><label class="state" for="select" data-v-65511fdb="">Select</label><br data-v-65511fdb=""><input type="radio" id="rect" name="state" value="0" data-v-65511fdb=""><label class="state" for="rect" data-v-65511fdb="">Rectangle</label><br data-v-65511fdb=""><input type="radio" id="elli" name="state" value="1" data-v-65511fdb=""><label class="state" for="elli" data-v-65511fdb="">Ellipse</label></p></div><div data-v-65511fdb=""><div class="tool" data-v-65511fdb=""><label for="strokeColor" data-v-65511fdb="">Stroke</label></div><div class="tool" data-v-65511fdb=""><input type="color" id="strokeColor" title="stroke color" data-v-65511fdb=""></div><br data-v-65511fdb=""><div class="tool" data-v-65511fdb=""><label for="strokeWidth" data-v-65511fdb="">width</label></div><div class="tool" data-v-65511fdb=""><input type="number" id="strokeWidth" min="1" max="50" title="stroke width" data-v-65511fdb=""></div></div><div data-v-65511fdb=""><div class="tool" data-v-65511fdb=""><input type="checkbox" id="fill" data-v-65511fdb=""><label for="fill" data-v-65511fdb="">Fill</label></div><div class="tool" data-v-65511fdb=""><input type="color" id="fillColor" title="fill color" data-v-65511fdb=""></div></div><div data-v-65511fdb=""><h4 data-v-65511fdb="">Layer</h4><p data-v-65511fdb=""><input type="radio" id="control" name="layer" value="0" data-v-65511fdb=""><label class="layer" for="control" data-v-65511fdb="">Control</label><br data-v-65511fdb=""><input type="radio" id="fluid" name="layer" value="1" data-v-65511fdb=""><label class="layer" for="fluid" data-v-65511fdb="">Fluid</label></p></div><div data-v-65511fdb=""><button class="btn" id="clear" data-v-65511fdb=""> Clear </button></div></div><svg xmlns="http://www.w3.org/2000/svg" id="workarea" class="drawing_cursor"><svg class="svg_canvas" xmlns="http://www.w3.org/2000/svg" data-v-3b06eedc=""></svg><svg class="svg_canvas inactive" xmlns="http://www.w3.org/2000/svg" data-v-3b06eedc=""></svg><!--v-if--></svg></div><!--v-if--></div>
     <!-- built files will be auto injected -->
   <script type="text/javascript" src="./svg_editor_files/chunk-vendors.js"></script><script type="text/javascript" src="./svg_editor_files/app.js"></script>
 
